@@ -19,22 +19,17 @@ public class Service {
       case GET:
         handleGet();
         serviceStream();
-        return;
       case POST:
         handlePost();
         serviceStream();
-        return;
       case PUT:
         handlePut();
         serviceStream();
-        return;
       case DELETE:
         handleDelete();
         serviceStream();
-        return;
       default:
         handleNotFound();
-        return;
     }
   }
 

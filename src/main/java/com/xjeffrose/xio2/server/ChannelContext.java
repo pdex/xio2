@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.logging.Logger;
 
-class ChannelContext {
+public class ChannelContext {
   private static final Logger log = Log.getLogger(ChannelContext.class.getName());
 
   private final ConcurrentLinkedDeque<ByteBuffer> bbList = new ConcurrentLinkedDeque<>();
@@ -95,6 +95,12 @@ class ChannelContext {
   public void write(HttpResponse resp) {
     if (state == State.start_response) {
       bbList.addLast(resp.toBB());
+    }
+  }
+
+  public void write(ByteBuffer bb) {
+    if (state == State.start_response) {
+      bbList.addLast(bb);
     }
   }
 }
